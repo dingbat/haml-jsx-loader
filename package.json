@@ -1,0 +1,15 @@
+{
+  "name": "haml-jsx-loader",
+  "version": "1.0.0",
+  "description": "Inline HAML with JSX",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Dan Hassin",
+  "license": "MIT",
+  "dependencies": {
+    "haml": "^0.4.3",
+    "loader-utils": "^0.2.15"
+  }
+}
