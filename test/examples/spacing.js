@@ -1,0 +1,1 @@
+const backText = <p className="lead">  Click <a href="/">here</a>   to go back.</p>
