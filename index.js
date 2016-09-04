@@ -1,6 +1,8 @@
 var haml = require("haml");
 var loaderUtils = require("loader-utils");
   
+var OPEN_DELIM, CLOSE_DELIM;
+
 // In: HAML
 // Out: Array of [Index, JS]
 function getOuterJS(haml) {
@@ -87,7 +89,8 @@ function renderHAML(source) {
 }
 
 function renderHAMLJSX(source) {
-  return source.replace(/\(~([\s\S]*)~\)/g, function(all, haml) {
+  var regex = OPEN_DELIM+"([\\s\\S]*)"+CLOSE_DELIM;
+  return source.replace(new RegExp(regex, 'g'), function(all, haml) {
     return duckJSXDuringTransform(haml, renderHAML);
   });
 }
@@ -95,7 +98,9 @@ function renderHAMLJSX(source) {
 module.exports = function (source) {
   this.cacheable && this.cacheable(true);
   var query = loaderUtils.parseQuery(this.query);
-  
+  OPEN_DELIM = query.open || "\\(~";
+  CLOSE_DELIM = query.close || "~\\)";
+
   var result;
   try {
     result = renderHAMLJSX(source);
