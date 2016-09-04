@@ -1,24 +1,24 @@
-var fs = require('fs');
-var glob = require('glob-fs')();
+import fs from 'fs';
+import glob from 'glob-fs';
 
-var assert = require('assert');
+import assert from 'assert';
 
-var HamlJSX = require("../index");
+import renderHamlJSX from '../lib/haml-jsx';
 
-describe('Conversions', function() {
+describe('Conversions', () => {
 
-  var files = glob.readdirSync('test/examples/*.haml.js');
-  files.forEach(function (haml_file) {
-    var haml_file_no_ext = haml_file.slice(0,-'haml.js'.length)
+  const files = glob().readdirSync('test/examples/*.haml.js');
+  files.forEach((haml_file) => {
+    const haml_file_no_ext = haml_file.slice(0,-'haml.js'.length)
 
-    it('should convert '+haml_file_no_ext.slice('test/examples/'.length), function() {
+    it('should convert '+haml_file_no_ext.slice('test/examples/'.length), () => {
 
-      var haml = fs.readFileSync(haml_file, 'utf8');
-      var actual = HamlJSX(haml);
-      var expected = fs.readFileSync(haml_file_no_ext+'js', 'utf8');
+      const haml = fs.readFileSync(haml_file, 'utf8');
+      const actual = renderHamlJSX(haml);
+      const expected = fs.readFileSync(haml_file_no_ext+'js', 'utf8');
 
       assert.equal(actual.trim(), expected.trim());
-
+      
     });
   });
 

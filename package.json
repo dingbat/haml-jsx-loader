@@ -2,11 +2,11 @@
   "name": "haml-jsx-loader",
   "version": "1.0.0",
   "description": "Inline HAML with JSX",
-  "url" : "https://github.com/dingbat/haml-jsx-loader/issues",
+  "url": "https://github.com/dingbat/haml-jsx-loader/issues",
   "repository": "dingbat/haml-jsx-loader",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --compilers js:babel-core/register"
   },
   "author": "Dan Hassin",
   "license": "MIT",
@@ -15,6 +15,9 @@
     "loader-utils": "^0.2.15"
   },
   "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-core": "^6.14.0",
+    "babel-preset-es2015": "^6.14.0",
     "glob-fs": "^0.1.6",
     "mocha": "^3.0.2"
   }
