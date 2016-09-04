@@ -1,1 +1,1 @@
-const text = <textarea name="message" placeholder="Your message here..." defaultValue={this.props.message}></textarea>
+const text = <div><textarea name="message" placeholder="Your message here..." defaultValue={this.props.message}></textarea><div name="message" placeholder="Your message here..." defaultValue={this.props.message}></div><div name="message" placeholder="Your message here..." defaultValue={this.props.message}></div></div>
