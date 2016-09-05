@@ -7,11 +7,11 @@ import replaceMatching from '../lib/replace-matching';
 import renderHamlJSX from '../lib/haml-jsx';
 
 describe('Replace Matching', () => {
-  it('should replace outer matches', () => {
-    let string = "xy: {a {b} {c}} z: {d {}}"
-    let options = {open: '{', close: '}'}
-    let replace
+  const string = "xy: {a {b} {c}} z: {d {}}"
+  let options = {open: '{', close: '}'}
+  let replace
 
+  it('should replace outer matches', () => {
     replace = replaceMatching("nothing", options, () => 'hi');
     assert.equal(replace, 'nothing');
 
@@ -20,11 +20,19 @@ describe('Replace Matching', () => {
 
     replace = replaceMatching(string, options, (x) => '['+x+']');
     assert.equal(replace, "xy: [a {b} {c}] z: [d {}]");
+  })
 
+  it('should work with longer-than-1 delimiters', () => {
     replace = replaceMatching("xy: (~a {b} {c}~) z: (~d {}~)", {open: '(~', close: '~)'}, (x) => '['+x+']');
     assert.equal(replace, "xy: [a {b} {c}] z: [d {}]");
 
-    options.findRegex = /((\w+): ){/
+    replace = replaceMatching("xy: (~x~a {b} {c}~~) z: (~x~d {}~~)", {open: '(~x~', close: '~~)'}, (x) => '['+x+']');
+    assert.equal(replace, "xy: [a {b} {c}] z: [d {}]");
+  })
+
+  it('should work with a regex for finding the open match', () => {
+    options.findRegex = /((\w+): ){/;
+
     replace = replaceMatching(string, options, (x, match) => match[2]);
     assert.equal(replace, "xy z");
 
@@ -33,8 +41,8 @@ describe('Replace Matching', () => {
 
     replace = replaceMatching(string, options, (x, match) => match[2]+'='+x);
     assert.equal(replace, "xy=a {b} {c} z=d {}");
-  });
-});
+  })
+})
 
 describe('Conversions', () => {
 
@@ -50,7 +58,7 @@ describe('Conversions', () => {
 
       assert.equal(actual.trim(), expected.trim());
       
-    });
-  });
+    })
+  })
 
-});
+})
