@@ -22,30 +22,29 @@ render() {
 ## Installation
 
 ```
-npm install haml-jsx-loader --save
+npm install haml-jsx-loader --save-dev
 ```
 
 Add it to your `webpack.config`:
 
 ```javascript
-  ...
-  module: {
-    loaders: [
-      // Make sure 'haml-jsx' is last!
-      { test: /\.js$/, loaders: ['babel', 'haml-jsx'], ... },
+...
+module: {
+  loaders: [
+    // Make sure 'haml-jsx' is last!
+    { test: /\.js$/, loaders: ['babel', 'haml-jsx'], ... },
 
-      // Works with hot module replacement:
-      { test: /\.js$/, loaders: ['react-hot', 'babel', 'haml-jsx'], ... },
-    ]
-  },
-  ...
+    // Works with hot module replacement:
+    { test: /\.js$/, loaders: ['react-hot', 'babel', 'haml-jsx'], ... },
+  ]
+},
+...
 ```
 
 If you want to use your own delimiters, load `haml-jsx` with a query passing them in.
-Note that they are being inserted into a regex, so they must be regex-escaped.
 
 ```
-'haml-jsx?open=\\(@&close=@\\)'
+'haml-jsx?open=(@&close=@)'
 ```
 
 ## Use
@@ -85,7 +84,7 @@ const menu = (~
 ~)
 ```
 
-Super-easy spacing between elements with `>` and `<`, following [this syntax](https://github.com/creationix/haml-js/#whitespace):
+Super-easy spacing control between elements with `>` and `<`, following [this syntax](https://github.com/creationix/haml-js/#whitespace):
 
 ```javascript
 const backText = (~
@@ -103,8 +102,9 @@ const divs = (~
   .
     .one-div
     .two-div#with-id
-    #three-div
-    .(class="four-div")
+    .
+      #three-div
+      .(class="four-div")
 ~);
 ```
 
@@ -119,6 +119,6 @@ const link = (~
 
 ### Notes
 
-* You may use `class=`, `className=` is no longer required
-* Use HTML-style, not Ruby-style, attribute lists: `%tag(key="val" key2={val2})`, not `%tag{key: "val"}` or `%tag{:key => "val2"}`
 * Use double quotes, not single quotes in property lists
+* You may use `class=`, `className=` is no longer required
+* Use HTML-style, not Ruby-style, attribute lists: `%tag(key="val" key2={val2})`, not `%tag{key: "val"}`
