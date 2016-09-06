@@ -1,6 +1,6 @@
 {
   "name": "haml-jsx-loader",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Inline HAML with JSX",
   "url": "https://github.com/dingbat/haml-jsx-loader/issues",
   "repository": "dingbat/haml-jsx-loader",
