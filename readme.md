@@ -1,6 +1,6 @@
 # Haml :heart: JSX
 
-[![npm version](https://badge.fury.io/js/haml-jsx-loader.svg)](https://www.npmjs.com/package/haml-jsx-loader) ![build status](https://api.travis-ci.org/dingbat/haml-jsx-loader.svg)
+[![npm version](https://badge.fury.io/js/haml-jsx-loader.svg)](https://www.npmjs.com/package/haml-jsx-loader) [![build status](https://api.travis-ci.org/dingbat/haml-jsx-loader.svg)](https://travis-ci.org/dingbat/haml-jsx-loader)
 
 With this webpack loader you can inline [HAML](http://haml.info) in JSX by putting it between delimeters, `(~` and `~)` by default.
 
