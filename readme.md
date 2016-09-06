@@ -57,7 +57,7 @@ One-line HAML:
 const icon = (~ %i.fa.fa-github ~);
 ```
 
-Multi-line attributes
+Multi-line attributeutes
 
 ```javascript
 const text = (~
@@ -121,4 +121,4 @@ const link = (~
 
 * Use double quotes, not single quotes in property lists
 * You may use `class=`, `className=` is no longer required
-* Use HTML-style, not Ruby-style, attribute lists: `%tag(key="val" key2={val2})`, not `%tag{key: "val"}`
+* Use [HTML-style, not Ruby-style](http://haml.info/docs/yardoc/file.REFERENCE.html#htmlstyle_attributes_), attribute lists: `%tag(key="val" key2={val2})`, not `%tag{key: "val"}`
