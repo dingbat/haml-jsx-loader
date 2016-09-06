@@ -1,3 +1,9 @@
+const text = (~
+  .
+    something
+    connected
+~)
+
 const backText = (~
   %p.lead
     Click
